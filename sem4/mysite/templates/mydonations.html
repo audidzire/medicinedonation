@@ -1,0 +1,436 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+<!--         &lt;!&ndash; Required meta tags &ndash;&gt;-->
+<!--  <meta charset="utf-8">-->
+<!--  <meta full_name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+
+<!--  &lt;!&ndash; Bootstrap CSS &ndash;&gt;-->
+<!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"-->
+<!--    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">-->
+        <meta charset="utf-8">
+        <title> Charity /</title>
+        <meta full_name="description" content="">
+        <meta full_name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>
+
+        <!-- Bootsrap -->
+        <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+        <!-- Font awesome -->
+        <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
+
+        <!-- Owl carousel -->
+        <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.css' %}">
+
+        <!-- Template main Css -->
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+        
+        <!-- Modernizr -->
+        <script src="{% static 'assets/js/modernizr-2.6.2.min.js' %}"></script>
+       
+        
+        
+  
+
+
+    </head>
+
+    <body>
+
+
+    <header class="main-header">
+        
+    
+        <nav class="navbar navbar-static-top">
+
+            <div class="navbar-top">
+
+              <div class="container">
+                  <div class="row">
+
+                    <div class="col-sm-6 col-xs-12">
+
+                        <ul class="list-unstyled list-inline header-contact">
+                            <li> <i class="fa fa-mobile_number"></i> <a href="tel:">+212 658 986 213 </a> </li>
+                             <li> <i class="fa fa-envelope"></i> <a href="mailto:contact@sadaka.org">contact@sadaka.org</a> </li>
+                       </ul> <!-- /.header-contact  -->
+                      
+                    </div>
+
+                    <div class="col-sm-6 col-xs-12 text-right">
+
+                        <ul class="list-unstyled list-inline header-social">
+
+                            <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
+                            <li> <a href="#"> <i class="fa fa-twitter"></i>  </a> </li>
+                            <li> <a href="#"> <i class="fa fa-google"></i>  </a> </li>
+                            <li> <a href="#"> <i class="fa fa-youtube"></i>  </a> </li>
+                            <li> <a href="#"> <i class="fa fa fa-pinterest-p"></i>  </a> </li>
+                       </ul> <!-- /.header-social  -->
+                      
+                    </div>
+
+
+                  </div>
+              </div>
+
+            </div>
+
+            <div class="navbar-main">
+              
+              <div class="container">
+
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+
+                  </button>
+                  
+                  <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'assets/images/sadaka-logo.png' %}" alt=""></a>
+                  
+                </div>
+
+                <div id="navbar" class="navbar-collapse collapse pull-right">
+
+                  <ul class="nav navbar-nav">
+
+                    <li><a class="is-active" href="{% url 'index' %}">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li class="has-child"><a href="#">CAUSES</a>
+
+                      <ul class="submenu">
+                         <li class="submenu-item"><a href="causes.html">Causes list </a></li>
+                         <li class="submenu-item"><a href="causes-single.html">Single cause </a></li>
+                         <li class="submenu-item"><a href="causes-single.html">Single cause </a></li>
+                         <li class="submenu-item"><a href="causes-single.html">Single cause </a></li>
+                      </ul>
+
+                    </li>
+                    <li><a href="{% url 'donation' %}">DONATIONS</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    {% if user.is_authenticated %}
+                      <li><a> Hello,{{user.full_name}} </a> </li>
+                      <!--<li><a href="donation/mydonations">MY_DONATIONS</a></li>-->
+                      <li><a href="{% url 'logout' %}">LOGOUT</a></li>
+                    {% else %}
+                    <li ><a data-target="#signupModal" data-toggle="modal" href="#signupModal" >REGISTER</a></li>
+                    <li><a data-target="#loginModal" data-toggle="modal" href="#">LOGIN</a></li>
+                    {% endif %}
+
+                  </ul>
+<!--                    href="accounts/register"-->
+<!--                     <a data-target="#myModal" data-toggle="modal" class="MainNavText" id="MainNavHelp" -->
+<!--       href="#myModal">HELP</a>-->
+                </div> <!-- /#navbar -->
+
+              </div> <!-- /.container -->
+              
+            </div> <!-- /.navbar-main -->
+
+
+        </nav>
+
+    </header> <!-- /. main-header -->
+
+
+    
+  <table id="paginationFirstLast" class="table table-striped  table-sm" width="100%">
+  <thead>
+    <tr>
+      <th class="th-sm">ID
+      </th>
+      <th class="th-sm">Brand Name
+      </th>
+      <th class="th-sm">Generic Name
+      </th>
+      <th class="th-sm">Type
+      </th>
+      <th class="th-sm">Quantity
+      </th>
+      <th class="th-sm">Manufacturing Date
+      </th>
+      <th class="th-sm">Expiry Date
+      </th>
+      <th class="th-sm">Description
+      </th>
+      <th class="th-sm">Availablity Status
+      </th>
+      
+      <th class="th-sm">Edit
+      </th>
+      
+    </tr>
+  </thead>
+  <tbody>
+      {% for d in MyDonations %}
+        <tr>
+            <td>{{ d.id}}</td>
+            <td>{{ d.brand_name}}</td>
+            <td>{{ d.generic_name}}</td>
+            <td>{{ d.type}}</td>
+            <td>{{ d.quantity}}</td>
+            <td>{{ d.manufacturing_date}}</td>
+            <td>{{ d.expiry_date}}</td>
+            <td>{{ d.description}}</td>
+            <td>{{ d.availability_status}}</td>
+            <td>
+                
+                <form method="post" action="edit_mydonations">
+                    {% csrf_token%}
+                    <input type="hidden" value="{{d.id}}" name="id">
+                    <input type="submit" value="Edit">
+                    
+                    
+                </form>
+            </td>
+            
+            
+        </tr>
+        
+        
+        {% endfor %}
+
+    
+  </tbody>
+
+  </table> 
+   
+
+
+
+
+
+    <div class="section-home our-sponsors animate-onscroll fadeIn">
+    
+        <div class="container">
+
+            <h2 class="title-style-1">Our Sponsors <span class="title-under"></span></h2>
+
+            <ul class="owl-carousel list-unstyled list-sponsors">
+
+              <li> <img src="{% static 'assets/images/sponsors/bus.png' %}" alt=""></li>
+              <li> <img src="{% static 'assets/images/sponsors/wikimedia.png' %}" alt=""></li>
+              <li> <img src="{% static 'assets/images/sponsors/one-world.png' %}" alt=""></li>
+              <li> <img src="{% static 'assets/images/sponsors/wikiversity.png' %}" alt=""></li>
+              <li> <img src="{% static 'assets/images/sponsors/united-nations.png' %}" alt=""></li>
+
+              <li> <img src="{% static 'assets/images/sponsors/bus.png' %}" alt=""></li>
+              <li> <img src="{% static 'assets/images/sponsors/wikimedia.png' %}" alt=""></li>
+              <li> <img src="{% static 'assets/images/sponsors/one-world.png' %}" alt=""></li>
+              <li> <img src="{% static 'assets/images/sponsors/wikiversity.png' %}" alt=""></li>
+              <li> <img src="{% static 'assets/images/sponsors/united-nations.png' %}" alt=""></li>
+
+            </ul>
+
+        </div>
+
+    </div> <!-- /.our-sponsors -->
+
+
+    
+
+
+    <footer class="main-footer">
+
+        <div class="footer-top">
+            
+        </div>
+
+
+        <div class="footer-main">
+            <div class="container">
+                
+                <div class="row">
+                    <div class="col-md-4">
+
+                        <div class="footer-col">
+
+                            <h4 class="footer-title">About us <span class="title-under"></span></h4>
+
+                            <div class="footer-content">
+
+                                <p>
+                                    <strong>Sadaka</strong> ipsum dolor sit amet, consectetur adipiscing elit. Ut at eros rutrum turpis viverra elementum semper quis ex. Donec lorem nulla, aliquam quis neque vel, maximus lacinia urna.
+                                </p> 
+
+                                <p>
+                                    ILorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at eros rutrum turpis viverra elementum semper quis ex. Donec lorem nulla, aliquam quis neque vel, maximus lacinia urna.
+                                </p>
+
+                            </div>
+                            
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="footer-col">
+
+                            <h4 class="footer-title">LAST TWEETS <span class="title-under"></span></h4>
+
+                            <div class="footer-content">
+                                <ul class="tweets list-unstyled">
+                                    <li class="tweet"> 
+
+                                        20 Surprise Eggs, Kinder Surprise Cars 2 Thomas Spongebob Disney Pixar  http://t.co/fTSazikPd4 
+
+                                    </li>
+
+                                    <li class="tweet"> 
+
+                                        20 Surprise Eggs, Kinder Surprise Cars 2 Thomas Spongebob Disney Pixar  http://t.co/fTSazikPd4 
+
+                                    </li>
+
+                                    <li class="tweet"> 
+
+                                        20 Surprise Eggs, Kinder Surprise Cars 2 Thomas Spongebob Disney Pixar  http://t.co/fTSazikPd4 
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="footer-col">
+
+                            <h4 class="footer-title">Contact us <span class="title-under"></span></h4>
+
+                            <div class="footer-content">
+
+                                <div class="footer-form">
+                                    
+                                    <div class="footer-form" >
+                                    
+                                    <form action="php/mail.php" class="ajax-form">
+
+                                        <div class="form-group">
+                                            <input type="text" full_name="full_name" class="form-control" placeholder="full_name" required>
+                                        </div>
+
+                                         <div class="form-group">
+                                            <input type="email" full_name="email" class="form-control" placeholder="E-mail" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <textarea full_name="message" class="form-control" placeholder="Message" required></textarea>
+                                        </div>
+
+                                        <div class="form-group alerts">
+                        
+                                            <div class="alert alert-success" role="alert">
+                                              
+                                            </div>
+
+                                            <div class="alert alert-danger" role="alert">
+                                              
+                                            </div>
+                                            
+                                        </div>
+
+                                         <div class="form-group">
+                                            <button type="submit" class="btn btn-submit pull-right">Send message</button>
+                                        </div>
+                                        
+                                    </form>
+
+                                </div>
+
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                    <div class="clearfix"></div>
+
+
+
+                </div>
+                
+                
+            </div>
+
+            
+        </div>
+
+        <div class="footer-bottom">
+
+            <div class="container text-right">
+                Sadaka @ copyrights 2015 - by <a href="http://www.ouarmedia.com" target="_blank">Ouarmedia</a>
+            </div>
+        </div>
+        
+    </footer> <!-- main-footer -->
+
+
+
+
+       
+    
+
+    <!--  Scripts
+    ================================================== -->
+
+    <!-- jQuery -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="assets/js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Bootsrap javascript file -->
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    
+    <!-- owl carouseljavascript file -->
+    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+    <!-- Template main javascript -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+        
+    <!-- jQuery -->
+  <script type="text/javascript" src="{% static 'donationcss/js/jquery.min.js' %}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{% static 'donationcss/js/popper.min.js' %}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{% static 'donationcss/js/bootstrap.min.js' %}"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{% static 'donationcss/js/mdb.min.js' %}"></script>
+  <!-- Your custom scripts (optional) -->
+  <script type="text/javascript"></script>
+  <!-- MDBootstrap Datatables  -->
+  <script type="text/javascript" src="{% static 'donationcss/js/addons/datatables2.min.js' %}"></script>
+    
+  <script>
+      $(document).ready(function () {
+  //Pagination First/Last Numbers
+  $('#paginationFirstLast').DataTable({
+    "pagingType": "first_last_numbers"
+  });
+});
+    </script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagfull_name(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+
+    </body>
+</html>

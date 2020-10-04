@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+.GFG {
+  width: 25%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.GFG{
+  background-color: #45a049;
+}
+.ABC { 
+            background-color: wite; 
+            border: 2px solid black; 
+            color: deepskyblue; 
+            padding: 5px 10px; 
+            text-align: center; 
+            display: inline-block; 
+            font-size: 20px; 
+            margin: 10px 30px; 
+            cursor: pointer; 
+            text-decoration:none; 
+        } 
+div {
+ align-self: center;
+ text-align: left;
+  width: 40%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 30px;
+  position: absolute;
+  left: 375px;
+}
+</style>
+<body>
+
+<h1 align=center>Donator Information</h1>
+
+<div >
+  <form >
+    {% csrf_token %}
+    {   % if user.is_authenticated %}
+    <h3>
+        {% for d in Donationinfo %}
+            {% if d.availability_status is True %}
+
+                {% for j in Information %}
+            
+                    <li>Name :          {{j.full_name}}</li>
+                    <li>Mobile Number : {{j.mobile_number}}</li>
+                    <li>City :          {{j.city}}</li>
+            
+                {% endfor %} 
+             {% else %}
+                <h2 align=center>Contact Details are available only if medicine is available.</h2>
+            {% endif %}
+
+        {% endfor %}
+    </h3>
+     <a href="donations" class="ABC">Close</a>
+      
+      
+  </form>
+    
+
+    {% else %}
+
+
+        <form >
+            {% csrf_token%}
+      
+            <h2 align=center >Contact Details are available only if you are logged in.</h2>
+            
+
+        
+    
+            <a href="donations" class="ABC">Close</a>
+      
+      
+        </form>
+    {% endif %}  
+</div>
+ 
+</body>
+</html>

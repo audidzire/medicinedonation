@@ -1,0 +1,32 @@
+<Html>  
+<head>   
+<title>  
+Registration Page  
+</title>  
+</head>  
+<body bgcolor="Lightskyblue">  
+<br>  
+<br>  
+<form action="register" method="post">
+{% csrf_token%}
+<input type="text" name="full_name" placeholder=" Name" size="15"/> <br> <br>          
+<input type="email" id="email" name="email" placeholder="Email Id"/>   
+<br> <br>   
+<input type="text" id="mobile_number" name="mobile_number" placeholder="Mobile Number"/>   
+<br> <br>   
+<input type="text" id="city" name="city" placeholder="Enter your city name"/>   
+<br> <br>   
+
+<input type="Password" id="pass" name="password1" placeholder="Password">    
+<br> <br>    
+<input type="Password" id="repass" name="password2" placeholder=" Confirm Password"> <br> <br>  
+<input type="submit" >  
+</form>
+    <div>
+        {% for message in messages%}
+        <h3>{{message}}</h3>
+        {% endfor %}  
+    </div>
+    
+</body>  
+</Html>
